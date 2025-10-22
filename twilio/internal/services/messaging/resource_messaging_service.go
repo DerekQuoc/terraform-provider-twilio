@@ -125,8 +125,8 @@ func resourceMessagingService() *schema.Resource {
 			"validity_period": {
 				Type:         schema.TypeInt,
 				Optional:     true,
-				Default:      14400,
-				ValidateFunc: validation.IntBetween(1, 14400),
+				Default:      36000,
+				ValidateFunc: validation.IntBetween(1, 36000),
 			},
 			"date_created": {
 				Type:     schema.TypeString,

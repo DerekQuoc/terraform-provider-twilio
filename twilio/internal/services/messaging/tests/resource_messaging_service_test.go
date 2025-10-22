@@ -42,7 +42,7 @@ func TestAccTwilioMessagingService_basic(t *testing.T) {
 					resource.TestCheckResourceAttr(stateResourceName, "status_callback_url", ""),
 					resource.TestCheckResourceAttr(stateResourceName, "sticky_sender", "true"),
 					resource.TestCheckResourceAttr(stateResourceName, "use_inbound_webhook_on_number", "false"),
-					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "14400"),
+					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "36000"),
 					resource.TestCheckResourceAttrSet(stateResourceName, "sid"),
 					resource.TestCheckResourceAttrSet(stateResourceName, "date_created"),
 					resource.TestCheckResourceAttrSet(stateResourceName, "date_updated"),
@@ -88,7 +88,7 @@ func TestAccTwilioMessagingService_update(t *testing.T) {
 					resource.TestCheckResourceAttr(stateResourceName, "status_callback_url", ""),
 					resource.TestCheckResourceAttr(stateResourceName, "sticky_sender", "true"),
 					resource.TestCheckResourceAttr(stateResourceName, "use_inbound_webhook_on_number", "false"),
-					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "14400"),
+					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "36000"),
 					resource.TestCheckResourceAttrSet(stateResourceName, "sid"),
 					resource.TestCheckResourceAttrSet(stateResourceName, "date_created"),
 					resource.TestCheckResourceAttrSet(stateResourceName, "date_updated"),
@@ -113,7 +113,7 @@ func TestAccTwilioMessagingService_update(t *testing.T) {
 					resource.TestCheckResourceAttr(stateResourceName, "status_callback_url", ""),
 					resource.TestCheckResourceAttr(stateResourceName, "sticky_sender", "true"),
 					resource.TestCheckResourceAttr(stateResourceName, "use_inbound_webhook_on_number", "false"),
-					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "14400"),
+					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "36000"),
 					resource.TestCheckResourceAttrSet(stateResourceName, "sid"),
 					resource.TestCheckResourceAttrSet(stateResourceName, "date_created"),
 					resource.TestCheckResourceAttrSet(stateResourceName, "date_updated"),
@@ -317,7 +317,7 @@ func TestAccTwilioMessagingService_validityPeriod(t *testing.T) {
 	stateResourceName := fmt.Sprintf("%s.service", serviceResourceName)
 
 	friendlyName := acctest.RandString(10)
-	validityPeriod := 14400
+	validityPeriod := 36000
 	newValidityPeriod := 1
 
 	resource.ParallelTest(t, resource.TestCase{
@@ -328,7 +328,7 @@ func TestAccTwilioMessagingService_validityPeriod(t *testing.T) {
 				Config: testAccTwilioMessagingService_validityPeriod(friendlyName, validityPeriod),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckTwilioMessagingServiceExists(stateResourceName),
-					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "14400"),
+					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "36000"),
 				),
 			},
 			{
@@ -342,7 +342,7 @@ func TestAccTwilioMessagingService_validityPeriod(t *testing.T) {
 				Config: testAccTwilioMessagingService_basic(friendlyName),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckTwilioMessagingServiceExists(stateResourceName),
-					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "14400"),
+					resource.TestCheckResourceAttr(stateResourceName, "validity_period", "36000"),
 				),
 			},
 		},
@@ -359,7 +359,7 @@ func TestAccTwilioMessagingService_invalidValidityPeriodOf0(t *testing.T) {
 		Steps: []resource.TestStep{
 			{
 				Config:      testAccTwilioMessagingService_validityPeriod(friendlyName, validityPeriod),
-				ExpectError: regexp.MustCompile(`(?s)expected validity_period to be in the range \(1 - 14400\), got 0`),
+				ExpectError: regexp.MustCompile(`(?s)expected validity_period to be in the range \(1 - 36000\), got 0`),
 			},
 		},
 	})
@@ -375,7 +375,7 @@ func TestAccTwilioMessagingService_invalidValidityPeriodOf14401(t *testing.T) {
 		Steps: []resource.TestStep{
 			{
 				Config:      testAccTwilioMessagingService_validityPeriod(friendlyName, validityPeriod),
-				ExpectError: regexp.MustCompile(`(?s)expected validity_period to be in the range \(1 - 14400\), got 14401`),
+				ExpectError: regexp.MustCompile(`(?s)expected validity_period to be in the range \(1 - 36000\), got 14401`),
 			},
 		},
 	})

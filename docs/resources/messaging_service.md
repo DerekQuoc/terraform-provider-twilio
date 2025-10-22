@@ -38,7 +38,7 @@ The following arguments are supported:
 - `status_callback_url` - (Optional) The URL which will be called when a message delivery status is changed
 - `sticky_sender` - (Optional) Whether to ensure the end-user receives messages from the same phone number. The default value is `true`
 - `use_inbound_webhook_on_number` - (Optional) Whether to use the webhook that is configured on the phone number. The default value is `false`
-- `validity_period` - (Optional) How long (in seconds) messages sent from the messaging service are valid for. The value must be between `1` and `14400` (inclusive). The default value is `14400`
+- `validity_period` - (Optional) How long (in seconds) messages sent from the messaging service are valid for. The value must be between `1` and `36000` (inclusive). The default value is `36000`
 
 ## Attributes Reference
 
